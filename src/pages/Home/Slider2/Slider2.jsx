@@ -23,7 +23,7 @@ import img5 from '../../../../src/photos/slider5.jpg'
 
 const Slider2 = () => {
     return (
-        <div className='mt-24'>
+        <div className='mt-20'>
             <Swiper
 
 
@@ -55,14 +55,11 @@ const Slider2 = () => {
 
 
             >
-
-
-
                 <SwiperSlide>
-                    
-                    
 
-                    <img className='bg-cover  rounded-3xl md:h-[600px] md:w-full' src={img1} alt="" />
+
+
+                    <img className='bg-cover  rounded-3xl md:h-[600px] ' src={img1} alt="" />
 
                 </SwiperSlide>
                 <SwiperSlide>

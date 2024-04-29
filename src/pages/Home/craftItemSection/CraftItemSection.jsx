@@ -12,8 +12,7 @@ const CraftItemSection = () => {
         <div>
 
 
-
-            <span className="text-6xl font-bold text-red-700 flex justify-center mt-8 mb-8">
+            <span className="text-6xl font-black flex justify-center mt-8 mb-8">
                 <Typewriter
                     words={['Craft Categories']}
                     loop={""}

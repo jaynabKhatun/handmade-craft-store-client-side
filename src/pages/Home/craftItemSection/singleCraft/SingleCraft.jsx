@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 const SingleCraft = ({ craft }) => {
 
@@ -20,6 +20,10 @@ const SingleCraft = ({ craft }) => {
             </div>
         </div>
     );
+};
+
+SingleCraft.propTypes = {
+    craft: PropTypes.object.isRequired,
 };
 
 export default SingleCraft;
