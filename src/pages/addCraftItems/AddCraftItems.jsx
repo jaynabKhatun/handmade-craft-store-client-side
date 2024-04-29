@@ -2,6 +2,7 @@ import Lottie from 'lottie-react';
 import cart from '../../../src/assets/add cart.json';
 import cart2 from '../../../src/assets/card logo.json'
 import { Typewriter } from 'react-simple-typewriter';
+import Swal from 'sweetalert2';
 
 const AddCraftItems = () => {
 
@@ -20,7 +21,35 @@ const AddCraftItems = () => {
         const email = form.email.value;
         const name = form.name.value;
 
-        console.log(photo, item, subcategory, price, processing, description, rating, customization, stockStatus, email, name);
+
+        const newCraft = { photo, item, subcategory, price, processing, description, rating, customization, stockStatus, email, name }
+
+        console.log(newCraft);
+
+        //post request
+        fetch('http://localhost:5000/crafts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCraft)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Item Added Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    
+                }
+                form.reset();
+
+            })
+
 
 
 
