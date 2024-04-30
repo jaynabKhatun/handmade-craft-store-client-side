@@ -7,6 +7,8 @@ import MyArtAndCrafts from "../pages/MyArtAndCraft/MyArtAndCrafts";
 import LoginPage from "../pages/loginPage/LoginPage";
 import RegisterPage from "../pages/registerPage/RegisterPage";
 import ErrorPage from "../pages/eroorPage/ErrorPage";
+import CraftDetails from "../pages/craftDetails/CraftDetails";
+import UpdateCraft from "../pages/MyArtAndCraft/UpdateCraft";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +20,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/crafts')
+
+            },
+
+            {
+                path: '/craft/:id',
+                element: <CraftDetails></CraftDetails>,
+
+
             },
 
             {
@@ -36,13 +45,25 @@ const router = createBrowserRouter([
                 element: <AllArtAndCraft></AllArtAndCraft>
             },
 
+
             {
                 path: '/addCraftItems',
                 element: <AddCraftItems></AddCraftItems>
             },
+
+            {
+                path: '/update/:id',
+                element: <UpdateCraft></UpdateCraft>,
+                loader:  ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                
+
+
+            },
+
             {
                 path: '/myArtAndCraft',
-                element: <MyArtAndCrafts></MyArtAndCrafts>
+                element: <MyArtAndCrafts></MyArtAndCrafts>,
+
             }
         ]
     },

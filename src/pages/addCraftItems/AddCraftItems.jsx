@@ -3,8 +3,11 @@ import cart from '../../../src/assets/add cart.json';
 import cart2 from '../../../src/assets/card logo.json'
 import { Typewriter } from 'react-simple-typewriter';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProviders';
+import { useContext } from 'react';
 
 const AddCraftItems = () => {
+    const { user } = useContext(AuthContext) || {};
 
     const handleAddCraft = (e) => {
         e.preventDefault();
@@ -18,37 +21,43 @@ const AddCraftItems = () => {
         const customization = form.customization.value;
         const processing = form.processing_time.value;
         const stockStatus = form.stockStatus.value;
-        const email = form.email.value;
+        const userEmail = form.email.value;
         const name = form.name.value;
+        const email = user.email;
 
 
-        const newCraft = { photo, item, subcategory, price, processing, description, rating, customization, stockStatus, email, name }
+
+        const newCraft = { photo, item, subcategory, price, processing, description, rating, customization, stockStatus, email, name, userEmail }
 
         console.log(newCraft);
 
         //post request
+
         fetch('http://localhost:5000/crafts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+
             body: JSON.stringify(newCraft)
         })
+
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Item Added Successfully",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    
+                        title: "Added!",
+                        text: "Craft has been added.",
+                        icon: "success"
+                    })
                 }
-                form.reset();
 
+                form.reset()
             })
+
+
+
 
 
 

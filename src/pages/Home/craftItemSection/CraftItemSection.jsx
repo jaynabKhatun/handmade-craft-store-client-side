@@ -1,12 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+
 import SingleCraft from "./singleCraft/SingleCraft";
 import { Typewriter } from 'react-simple-typewriter'
 
 
 
 const CraftItemSection = () => {
-    const crafts = useLoaderData()
-    console.log(crafts)
+   
     return (
 
         <div>
@@ -31,7 +30,7 @@ const CraftItemSection = () => {
            
             <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
-                    crafts.map(craft => <SingleCraft
+                    crafts.slice(0,6).map(craft => <SingleCraft
                         key={craft._id}
                         craft={craft}
                     ></SingleCraft>)

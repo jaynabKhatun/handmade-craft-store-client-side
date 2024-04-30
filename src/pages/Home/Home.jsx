@@ -4,6 +4,7 @@ import Slider2 from "../Home/Slider2/Slider2";
 import CraftItemSection from "./craftItemSection/CraftItemSection";
 import UpCommingEvent from "./upCommingEvent/UpCommingEvent";
 import AskQuestion from "./askQuestion/AskQuestion";
+import MarqueSlider from "./marqueSlider/MarqueSlider";
 
 
 
@@ -15,9 +16,9 @@ const Home = () => {
 
             <Navber></Navber>
             <Slider2></Slider2>
-            <CraftItemSection></CraftItemSection>
             <UpCommingEvent></UpCommingEvent>
             <AskQuestion></AskQuestion>
+            <MarqueSlider></MarqueSlider>
             <Footer></Footer>
 
 

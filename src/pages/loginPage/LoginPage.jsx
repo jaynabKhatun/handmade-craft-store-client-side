@@ -3,10 +3,15 @@ import Navber from "../shared/navber/Navber";
 
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 
 const LoginPage = () => {
+
+    const { loginUser, googleLogIn, githubLogIn } = useContext(AuthContext)
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -15,7 +20,91 @@ const LoginPage = () => {
         const password = form.password.value;
         const user = { email, password };
         console.log(user);
+
+        if (password.length < 6) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must be at least 6 characters!",
+            });
+            return;
+        } else if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must contain at least one lowercase letter and one uppercase letter!",
+            });
+            return;
+        }
+
+        //login user with email and password
+
+        loginUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Log in Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+
+            })
+
+
+
+        //google log in
+
+
+
+
+
+
+
     }
+
+    const handleGoogleLogIn = () => {
+        googleLogIn()
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Log in Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
+    const handleGithubLogIn = () => {
+        githubLogIn()
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Log in Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
+    }
+
+
 
 
 
@@ -47,11 +136,14 @@ const LoginPage = () => {
                         <a href="#" rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</a>
                     </p>
                     <div className="my-6 space-y-4">
-                        <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border-b-2 rounded-md focus:ring-2 focus:ring-offset-1 shadow-2xl dark:border-gray-600 focus:dark:ring-violet-600">
+                        <button onClick={handleGoogleLogIn}
+
+                            aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border-b-2 rounded-md focus:ring-2 focus:ring-offset-1 shadow-2xl dark:border-gray-600 focus:dark:ring-violet-600">
                             <FaGoogle></FaGoogle>
                             <p>Login with Google</p>
                         </button>
-                        <button aria-label="Login with GitHub" role="button" className="flex items-center justify-center w-full p-4 shadow-2xl space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+                        <button onClick={handleGithubLogIn}
+                         aria-label="Login with GitHub" role="button" className="flex items-center justify-center w-full p-4 shadow-2xl space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
                             <FaGithub></FaGithub>
                             <p>Login with GitHub</p>
                         </button>
@@ -85,13 +177,13 @@ const LoginPage = () => {
                     </form>
                     <p className="text-center">dont have account <Link to={'/register'}><span className="font-bold border border-b-2 tracking-wide">Register</span></Link> here</p>
                 </div>
-                
+
 
             </div>
 
-            
-       
-           
+
+
+
 
         </div>
     );

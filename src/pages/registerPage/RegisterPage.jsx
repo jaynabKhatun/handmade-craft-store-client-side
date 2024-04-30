@@ -1,10 +1,87 @@
 
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import Lottie from "lottie-react";
 import register from '../../../src/assets/register json.json'
+import { useContext} from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
+import Swal from 'sweetalert2';
+
 
 const RegisterPage = () => {
+    const { createUser, updateUser } = useContext(AuthContext);
+    
+
+
+
+    const handleRegister = (e) => {
+
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const image = form.photo.value;
+        const newUser = { name, email, password, image }
+        console.log(newUser);
+
+        if (password.length < 6) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must be at least 6 characters!",
+            });
+            return;
+        } else if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must contain at least one lowercase letter and one uppercase letter!",
+            });
+            return;
+        }
+
+
+
+        //create new user with email and password
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+
+                //update user with name and photo
+                updateUser(name, Image)
+                    .then(() => {
+                        // Navigate after sign in
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Register Successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    })
+                form.reset()
+            })
+
+
+            .catch(error => {
+
+                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                })
+
+
+
+            })
+
+    }
+
+
     return (
         <div>
             <section className="p-6 dark:text-gray-500 mt-28 md:flex  ">
@@ -12,7 +89,8 @@ const RegisterPage = () => {
 
 
 
-                <form className="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow bg-base-200 ">
+                <form onSubmit={handleRegister}
+                    className="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow bg-base-200 ">
                     <span className=' font-serif text-2xl  text-black font-bold'>
                         <Typewriter
                             words={['REGISTER Here...']}
