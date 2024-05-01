@@ -1,24 +1,20 @@
 import PropTypes from 'prop-types';
+import { FaStackExchange, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const SingleCraft = () => {
+const SingleCraft = ({ c }) => {
 
-
+    const { _id, photo, item, rating, stockStatus } = c;
 
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure className="px-10 pt-10">
-                    <img src='' alt="Shoes" className="rounded-xl " />
-                </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title font-bold">fgd</h2>
-                    <p className="line-clamp-2 font-medium">fd</p>
-
-                    <div className="card-actions">
-                        <Link ><button 
-                     className="btn btn-primary">Show Details</button></Link>
-                    </div>
+        <div className="card w-96 glass shadow-2xl mb-6 transition hover:scale-105 ">
+            <figure><img src={photo} alt="car!" /></figure>
+            <div className="card-body">
+                <h2 className="font-bold text-2xl">{item}</h2>
+                <p className='flex items-center gap-2 '><FaStar></FaStar> <FaStar></FaStar> <FaStar></FaStar>{rating}</p>
+                <p className='font-bold flex items-center gap-2 text-green-500'>{stockStatus}<FaStackExchange></FaStackExchange></p>
+                <div className="card-actions justify-end">
+                    <Link to={`/details/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                 </div>
             </div>
         </div>
@@ -27,6 +23,7 @@ const SingleCraft = () => {
 
 SingleCraft.propTypes = {
     craft: PropTypes.object.isRequired,
+    c: PropTypes.object.isRequired,
 };
 
 export default SingleCraft;

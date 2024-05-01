@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../../public/logo_black.png'
 
-import { Tooltip as ReactTooltip } from 'react-tooltip'
+
 
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
@@ -51,7 +51,7 @@ const Navber = () => {
 
 
             }
-        }}> <li><a>All Art & craft Items</a></li></NavLink>
+        }}> <li><a>All Art </a></li></NavLink>
 
 
         <NavLink to={'/addCraftItems'} style={({ isActive }) => {
@@ -69,7 +69,7 @@ const Navber = () => {
 
 
             }
-        }}> <li><a> Add Craft Item</a></li></NavLink>
+        }}> <li><a> Add Art Item</a></li></NavLink>
 
 
         <NavLink to={'/myArtAndCraft'} style={({ isActive }) => {
@@ -87,7 +87,7 @@ const Navber = () => {
 
 
             }
-        }}> <li><a>My Art&Craft List</a></li></NavLink>
+        }}> <li><a>My Art List</a></li></NavLink>
 
 
 
@@ -162,7 +162,7 @@ const Navber = () => {
                             {NavLinks}
                         </ul>
                     </div>
-                    <img className='w-40' src={logo} alt="" />
+                    <img className='md:w-40 w-20' src={logo} alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -170,7 +170,7 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div>
-                    <label className="cursor-pointer grid place-items-center">
+                    <label className="cursor-pointer mr-6 grid place-items-center">
                         <input
                             onChange={toggleTheme}
                             type="checkbox" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
@@ -180,12 +180,12 @@ const Navber = () => {
                 </div>
 
 
-                <div className="navbar-end ">
+                <div className="md:navbar-end  ">
 
                     {
-                        user ? <div className='flex gap-4'>
+                        user ? <div className='flex '>
                             <img id="image-id" className="w-14 rounded-full "
-                                src={user?.photoURL || "https://i.ibb.co/dJKZzrg/default-pic.png"} />
+                                src={user?.photoURL || "https://i.ibb.co/wRvJPx7/vecteezy-ai-generated-the-man-said-hi-and-smiled-36110613.jpg"} />
 
                             <button onClick={handleSignout} className='btn btn-ghost'>log out</button>
 

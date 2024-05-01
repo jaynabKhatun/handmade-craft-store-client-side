@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Marquee from "react-fast-marquee";
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -28,6 +29,16 @@ const UpCommingEvent = () => {
 
     return (
         <div className=' mt-16'>
+            <Marquee className='mt-14 mb-8'>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Upcoming Painting Events</h1>
+            </Marquee>
+
+
             <span className='text-6xl flex justify-center font-black'> <Typewriter
                 words={['Upcoming Painting Events...']}
                 loop={""}
@@ -50,7 +61,7 @@ const UpCommingEvent = () => {
                     delay: 1000,
                     disableOnInteraction: false,
                 }}
-               
+
                 coverflowEffect={{
                     rotate: 50,
                     stretch: 0,
@@ -58,7 +69,7 @@ const UpCommingEvent = () => {
                     modifier: 1,
                     slideShadows: true,
                 }}
-                
+
                 modules={[EffectCoverflow, Autoplay, Pagination]}
                 className="mySwiper"
             >

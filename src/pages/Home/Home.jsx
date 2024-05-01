@@ -5,6 +5,7 @@ import CraftItemSection from "./craftItemSection/CraftItemSection";
 import UpCommingEvent from "./upCommingEvent/UpCommingEvent";
 import AskQuestion from "./askQuestion/AskQuestion";
 import MarqueSlider from "./marqueSlider/MarqueSlider";
+import SubCetegory from "./subCategory/SubCetegory";
 
 
 
@@ -16,6 +17,8 @@ const Home = () => {
 
             <Navber></Navber>
             <Slider2></Slider2>
+            <CraftItemSection></CraftItemSection>
+            <SubCetegory></SubCetegory>
             <UpCommingEvent></UpCommingEvent>
             <AskQuestion></AskQuestion>
             <MarqueSlider></MarqueSlider>

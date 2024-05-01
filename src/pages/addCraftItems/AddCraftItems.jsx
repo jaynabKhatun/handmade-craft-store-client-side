@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProviders';
 import { useContext } from 'react';
 
+
 const AddCraftItems = () => {
     const { user } = useContext(AuthContext) || {};
 
@@ -31,7 +32,24 @@ const AddCraftItems = () => {
 
         console.log(newCraft);
 
+
         //post request
+
+        fetch('http://localhost:5000/subcategorydata', {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCraft)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
+        //post request
+
 
         fetch('http://localhost:5000/crafts', {
             method: 'POST',

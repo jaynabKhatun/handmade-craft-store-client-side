@@ -62,7 +62,7 @@ const SingleMyCraft = ({ card, control, setControl }) => {
 
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card mb-6  card-compact hover:scale-105 hover:border hover:border-green-400 w-96 h-[500px] bg-base-100 shadow-xl">
                 <figure><img src={photo} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{item}</h2>

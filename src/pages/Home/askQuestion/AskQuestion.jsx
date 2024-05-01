@@ -1,11 +1,20 @@
 import Lottie from "lottie-react";
 import question from '../../../assets/question.json'
 import { Typewriter } from 'react-simple-typewriter'
+import Marquee from "react-fast-marquee";
 
 const AskQuestion = () => {
     return (
 
         <div>
+            <Marquee className='mt-14 mb-8'>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+                <h1 className='font-serif font-black text-2xl mr-10'>Ask Anything</h1>
+            </Marquee>
             <span className="text-6xl font-black flex justify-center mb-10 ">
                 <Typewriter
                     words={['Ask a Question...']}

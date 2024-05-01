@@ -9,6 +9,9 @@ import RegisterPage from "../pages/registerPage/RegisterPage";
 import ErrorPage from "../pages/eroorPage/ErrorPage";
 import CraftDetails from "../pages/craftDetails/CraftDetails";
 import UpdateCraft from "../pages/MyArtAndCraft/UpdateCraft";
+import SubCetegory from "../pages/Home/subCategory/SubCetegory";
+import ViewSubcategory from "../pages/viewSubcategory/ViewSubcategory";
+import ViewMoreSub from "../pages/viewMoreSub/ViewMoreSub";
 
 const router = createBrowserRouter([
     {
@@ -20,15 +23,35 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/crafts')
 
             },
 
             {
-                path: '/craft/:id',
+                path: '/details/:id',
                 element: <CraftDetails></CraftDetails>,
-
+                loader: ({ params }) => fetch(`http://localhost:5000/craftdata/${params.id}`),
 
             },
+            {
+                path: '/subcategory',
+                element: <SubCetegory></SubCetegory>,
+                loader: () => fetch('http://localhost:5000/subcategorydata')
+
+            },
+
+            {
+                path: '/view/:id',
+                element: <ViewSubcategory></ViewSubcategory>,
+                loader: () => fetch('http://localhost:5000/subcategorydata'),
+
+            },
+            {
+                path: '/viewmore/:id',
+                element: <ViewMoreSub></ViewMoreSub>,
+                loader: ({ params }) => fetch(`http://localhost:5000/subdata/${params.id}`),
+            },
+
 
             {
                 path: '/register',
@@ -42,7 +65,8 @@ const router = createBrowserRouter([
 
             {
                 path: '/allArtAndCraft',
-                element: <AllArtAndCraft></AllArtAndCraft>
+                element: <AllArtAndCraft></AllArtAndCraft>,
+                loader: () => fetch('http://localhost:5000/crafts'),
             },
 
 
@@ -54,8 +78,8 @@ const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <UpdateCraft></UpdateCraft>,
-                loader:  ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
-                
+
+
 
 
             },
