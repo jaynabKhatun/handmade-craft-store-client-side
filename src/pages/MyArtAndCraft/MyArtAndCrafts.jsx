@@ -16,7 +16,7 @@ const MyArtAndCrafts = () => {
 
 
     useEffect(() => {
-        fetch(` http://localhost:5000/crafts/${user?.email}`,)
+        fetch(` art-and-craft-store-hazel.vercel.app/crafts/${user?.email}`,)
             .then(res => res.json())
             .then(data => {
                 setCards(data)

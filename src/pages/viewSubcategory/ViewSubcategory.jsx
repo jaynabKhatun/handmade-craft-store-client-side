@@ -3,8 +3,10 @@ import ShowSubData from "./ShowSubData";
 
 
 const ViewSubcategory = () => {
+
     const ids = useLoaderData();
-    console.log(ids)
+    console.log(ids);
+    
     return (
 
 

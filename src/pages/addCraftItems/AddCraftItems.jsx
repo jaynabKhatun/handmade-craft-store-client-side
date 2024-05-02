@@ -35,7 +35,7 @@ const AddCraftItems = () => {
 
         //post request
 
-        fetch('http://localhost:5000/subcategorydata', {
+        fetch('art-and-craft-store-hazel.vercel.app/subcategorydata', {
 
             method: 'POST',
             headers: {
@@ -51,7 +51,7 @@ const AddCraftItems = () => {
         //post request
 
 
-        fetch('http://localhost:5000/crafts', {
+        fetch('art-and-craft-store-hazel.vercel.app/crafts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

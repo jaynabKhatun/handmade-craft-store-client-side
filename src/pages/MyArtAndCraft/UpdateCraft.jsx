@@ -30,7 +30,7 @@ const UpdateCraft = () => {
         console.log(updateCraft);
 
         //update craft
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`art-and-craft-store-hazel.vercel.app/update/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
