@@ -1,7 +1,7 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navber from "../shared/navber/Navber";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
@@ -11,7 +11,13 @@ import Swal from "sweetalert2";
 
 const LoginPage = () => {
 
-    const { loginUser, googleLogIn, githubLogIn } = useContext(AuthContext)
+    const { loginUser, googleLogIn, githubLogIn } = useContext(AuthContext);
+    const location = useLocation();
+    console.log('there is location', location);
+    const navigate = useNavigate();
+
+
+    console.log(location);
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -42,6 +48,10 @@ const LoginPage = () => {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user);
+                navigate(location?.state ? location.state : '/');
+
+
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -49,10 +59,21 @@ const LoginPage = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+
+                //user navigate to home page
+
+
+
+
                 form.reset();
             })
             .catch(error => {
                 console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                })
 
             })
 
@@ -143,7 +164,7 @@ const LoginPage = () => {
                             <p>Login with Google</p>
                         </button>
                         <button onClick={handleGithubLogIn}
-                         aria-label="Login with GitHub" role="button" className="flex items-center justify-center w-full p-4 shadow-2xl space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
+                            aria-label="Login with GitHub" role="button" className="flex items-center justify-center w-full p-4 shadow-2xl space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
                             <FaGithub></FaGithub>
                             <p>Login with GitHub</p>
                         </button>

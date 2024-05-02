@@ -12,6 +12,7 @@ import UpdateCraft from "../pages/MyArtAndCraft/UpdateCraft";
 import SubCetegory from "../pages/Home/subCategory/SubCetegory";
 import ViewSubcategory from "../pages/viewSubcategory/ViewSubcategory";
 import ViewMoreSub from "../pages/viewMoreSub/ViewMoreSub";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/details/:id',
-                element: <CraftDetails></CraftDetails>,
+                element: <PrivateRoutes><CraftDetails></CraftDetails></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/craftdata/${params.id}`),
 
             },
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/viewmore/:id',
-                element: <ViewMoreSub></ViewMoreSub>,
+                element: <PrivateRoutes><ViewMoreSub></ViewMoreSub>,</PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/subdata/${params.id}`),
             },
 
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/allArtAndCraft',
-                element: <AllArtAndCraft></AllArtAndCraft>,
+                element: <PrivateRoutes> <AllArtAndCraft></AllArtAndCraft></PrivateRoutes>,
                 loader: () => fetch('http://localhost:5000/crafts'),
             },
 

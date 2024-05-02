@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const ShowSubData = ({ id }) => {
+const ShowSubData = ({ id, loading }) => {
+    if (loading) {
+        return <span className="loading loading-spinner loading-lg"></span>
+    }
     const { photo, _id, item, subcategory, price, processing, description, rating, } = id;
     return (
         <div>
@@ -28,6 +31,7 @@ const ShowSubData = ({ id }) => {
 
 ShowSubData.propTypes = {
     id: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
 };
 
 export default ShowSubData;

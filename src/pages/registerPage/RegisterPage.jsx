@@ -1,5 +1,5 @@
 
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import Lottie from "lottie-react";
 import register from '../../../src/assets/register json.json'
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 const RegisterPage = () => {
     const { createUser, updateUser } = useContext(AuthContext);
+    const navigate= useNavigate();
     
 
 
@@ -53,6 +54,9 @@ const RegisterPage = () => {
                 updateUser(name, Image)
                     .then(() => {
                         // Navigate after sign in
+                        navigate('/')
+
+
                         Swal.fire({
                             position: "top-end",
                             icon: "success",

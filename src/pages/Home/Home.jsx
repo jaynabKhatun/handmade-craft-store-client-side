@@ -9,7 +9,9 @@ import SubCetegory from "./subCategory/SubCetegory";
 
 
 
+
 const Home = () => {
+
 
     return (
         <div>
@@ -28,5 +30,6 @@ const Home = () => {
         </div>
     );
 };
+
 
 export default Home;
