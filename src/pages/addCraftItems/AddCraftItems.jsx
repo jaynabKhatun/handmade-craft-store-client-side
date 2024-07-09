@@ -37,7 +37,7 @@ const AddCraftItems = () => {
 
         //post request
 
-        fetch('http://localhost:5000/subcategorydata', {
+        fetch('https://handmade-craft-store-server-side.vercel.app/subcategorydata', {
 
             method: 'POST',
             headers: {
@@ -53,7 +53,7 @@ const AddCraftItems = () => {
         //post request
 
 
-        fetch('http://localhost:5000/crafts', {
+        fetch('https://handmade-craft-store-server-side.vercel.app/crafts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

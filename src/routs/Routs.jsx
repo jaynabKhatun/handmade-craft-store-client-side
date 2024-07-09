@@ -24,33 +24,33 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/crafts')
+                loader: () => fetch('https://handmade-craft-store-server-side.vercel.app/crafts')
 
             },
 
             {
                 path: '/details/:id',
                 element: <PrivateRoutes><CraftDetails></CraftDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craftdata/${params.id}`),
+                loader: ({ params }) => fetch(`https://handmade-craft-store-server-side.vercel.app/craftdata/${params.id}`),
 
             },
             {
                 path: '/subcategory',
                 element: <SubCetegory></SubCetegory>,
-                loader: () => fetch('http://localhost:5000/subcategorydata')
+                loader: () => fetch('https://handmade-craft-store-server-side.vercel.app/subcategorydata')
 
             },
 
             {
                 path: '/view/:id',
-                element: <ViewSubcategory></ViewSubcategory>,
-                loader: () => fetch('http://localhost:5000/subcategorydata'),
+                element: <PrivateRoutes><ViewSubcategory></ViewSubcategory></PrivateRoutes>,
+                loader: () => fetch('https://handmade-craft-store-server-side.vercel.app/subcategorydata'),
 
             },
             {
                 path: '/viewmore/:id',
                 element: <PrivateRoutes><ViewMoreSub></ViewMoreSub>,</PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/subdata/${params.id}`),
+                loader: ({ params }) => fetch(`https://handmade-craft-store-server-side.vercel.app/subdata/${params.id}`),
             },
 
 
@@ -73,13 +73,13 @@ const router = createBrowserRouter([
 
             {
                 path: '/addCraftItems',
-                element: <AddCraftItems></AddCraftItems>
+                element: <PrivateRoutes><AddCraftItems></AddCraftItems></PrivateRoutes>
             },
 
             {
                 path: '/update/:id',
-                element: <UpdateCraft></UpdateCraft>,
-                loader:({params})=> fetch(`http://localhost:5000/craftdata/${params.id}`),
+                element: <PrivateRoutes><UpdateCraft></UpdateCraft></PrivateRoutes>,
+                loader:({params})=> fetch(`https://handmade-craft-store-server-side.vercel.app/craftdata/${params.id}`),
                 
 
 
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/myArtAndCraft',
-                element: <MyArtAndCrafts></MyArtAndCrafts>,
+                element: <PrivateRoutes><MyArtAndCrafts></MyArtAndCrafts></PrivateRoutes>,
 
             }
         ]

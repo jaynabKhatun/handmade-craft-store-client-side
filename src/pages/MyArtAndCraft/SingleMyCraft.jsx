@@ -19,7 +19,7 @@ const SingleMyCraft = ({ card, control, setControl, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/crafts/${_id}`, {
+        fetch(`https://handmade-craft-store-server-side.vercel.app/crafts/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

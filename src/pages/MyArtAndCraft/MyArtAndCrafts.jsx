@@ -10,7 +10,7 @@ const MyArtAndCrafts = () => {
   console.log(user?.email);
 
   useEffect(() => {
-    fetch(` http://localhost:5000/crafts/${user?.email}`)
+    fetch(` https://handmade-craft-store-server-side.vercel.app/crafts/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
