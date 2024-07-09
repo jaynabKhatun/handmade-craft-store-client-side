@@ -25,7 +25,7 @@ const SocialLogin = () => {
   return (
     <div
       onClick={handleGoogleSignIn}
-      className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+      className="flex items-center justify-center text-gray-600 transition-colors duration-300 w-full hover:border-white shadow-2xl  border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
     >
       <div className="px-4 py-2">
         <FcGoogle className="text-2xl"></FcGoogle>

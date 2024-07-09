@@ -1,4 +1,3 @@
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import Navber from "../shared/navber/Navber";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,9 +6,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import GithubLogin from "./GithubLogin";
 
 const LoginPage = () => {
-  const { loginUser, githubLogIn } = useContext(AuthContext);
+  const { loginUser} = useContext(AuthContext);
   const location = useLocation();
   console.log("there is location", location);
   const navigate = useNavigate();
@@ -71,22 +71,7 @@ const LoginPage = () => {
     //google log in
   };
 
-  const handleGithubLogIn = () => {
-    githubLogIn()
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Log in Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  
 
   return (
     <div>
@@ -116,16 +101,7 @@ const LoginPage = () => {
           </p>
           <div className="my-6 space-y-4">
             <SocialLogin></SocialLogin>
-
-            <button
-              onClick={handleGithubLogIn}
-              aria-label="Login with GitHub"
-              role="button"
-              className="flex items-center justify-center w-full p-4 shadow-2xl space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
-            >
-              <FaGithub></FaGithub>
-              <p>Login with GitHub</p>
-            </button>
+            <GithubLogin></GithubLogin>
           </div>
           <div className="flex items-center w-full my-4">
             <hr className="w-full dark:text-gray-600" />
