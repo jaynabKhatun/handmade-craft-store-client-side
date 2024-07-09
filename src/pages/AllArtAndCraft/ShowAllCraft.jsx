@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import propTypes from "propTypes";
+
 
 const ShowAllCraft = ({ craft }) => {
   const { price, photo, rating, item, description, stockStatus,_id } = craft;
@@ -25,10 +25,6 @@ const ShowAllCraft = ({ craft }) => {
     </div>
   );
 };
-
-ShowAllCraft.prototype={
-  price: 
-}
 
 
 export default ShowAllCraft;
