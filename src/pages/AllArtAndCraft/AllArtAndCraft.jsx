@@ -1,88 +1,41 @@
-
-
-import { FaDownLong } from "react-icons/fa6";
-import { Link, useLoaderData } from "react-router-dom";
-
-
+import { useQuery } from "@tanstack/react-query";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
+import ShowAllCraft from "./ShowAllCraft";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const AllArtAndCraft = () => {
-    const loadedUser = useLoaderData();
-    console.log(loadedUser)
-   
+  const axiosCommon = useAxiosCommon();
 
+  const {
+    data: crafts = [],
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["crafts"],
+    queryFn: async () => {
+      const response = await axiosCommon.get("/crafts");
+      return response.data;
+    },
+  });
 
-    const handleYes = () => {
-        console.log("yes")
-       
-            
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    }
-    const handleNo = () => {
-        console.log("no")
+  if (error) {
+    return <div>Error loading crafts</div>;
+  }
 
-    }
-
-
-
-    return (
-        <div className="mt-28">
-
-            <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn m-1">Customization <FaDownLong></FaDownLong></div>
-                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li onClick={handleYes}><a>yes</a></li>
-                    <li onClick={handleNo}><a>no</a></li>
-                </ul>
-            </div>
-
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
-                            <th>Email</th>
-                            <th>Name</th>
-                            <th>Customization</th>
-                            <th>user email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        {
-                            loadedUser.map(user => {
-                                return (
-                                    <tr key={user._id}>
-                                        <td>
-                                            <label>
-                                                <input type="checkbox" className="checkbox" />
-                                            </label>
-                                        </td>
-                                        <td>{user.email}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.customization}</td>
-                                        <td>{user.userEmail}</td>
-                                        <td>
-                                            <Link to={`/details/${user._id}`}>
-                                                <button className="btn btn-primary">Update</button>
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
-
-                    </tbody>
-
-
-                </table>
-            </div>
-        </div>
-    );
+  return (
+    <div>
+        <SectionTitle subHeading="Our All Items" heading="Painting"></SectionTitle>
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-28">
+        {crafts.map((craft) => (
+          <ShowAllCraft key={craft._id} craft={craft} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default AllArtAndCraft;
