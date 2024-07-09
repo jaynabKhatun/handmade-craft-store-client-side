@@ -5,10 +5,12 @@ import { Typewriter } from 'react-simple-typewriter';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProviders';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddCraftItems = () => {
     const { user } = useContext(AuthContext) || {};
+    const navaigate= useNavigate();
 
     const handleAddCraft = (e) => {
         e.preventDefault();
@@ -35,7 +37,7 @@ const AddCraftItems = () => {
 
         //post request
 
-        fetch('art-and-craft-store-hazel.vercel.app/subcategorydata', {
+        fetch('http://localhost:5000/subcategorydata', {
 
             method: 'POST',
             headers: {
@@ -51,7 +53,7 @@ const AddCraftItems = () => {
         //post request
 
 
-        fetch('art-and-craft-store-hazel.vercel.app/crafts', {
+        fetch('http://localhost:5000/crafts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,6 +66,7 @@ const AddCraftItems = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
+                    navaigate('/myArtAndCraft')
                     Swal.fire({
                         title: "Added!",
                         text: "Craft has been added.",
