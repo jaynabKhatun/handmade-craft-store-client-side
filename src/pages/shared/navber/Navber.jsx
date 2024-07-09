@@ -184,7 +184,7 @@ const Navber = () => {
 
                     {
                         user ? <div className='flex '>
-                            <img id="image-id" className="w-14 rounded-full "
+                            <img id="image-id" title={user.displayName} className="w-14 rounded-full "
                                 src={user?.photoURL || "https://i.ibb.co/wRvJPx7/vecteezy-ai-generated-the-man-said-hi-and-smiled-36110613.jpg"} />
 
                             <button onClick={handleSignout} className='btn btn-ghost'>log out</button>

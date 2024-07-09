@@ -24,33 +24,33 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://art-and-craft-store-hazel.vercel.app/crafts')
+                loader: () => fetch('http://localhost:5000/crafts')
 
             },
 
             {
                 path: '/details/:id',
                 element: <PrivateRoutes><CraftDetails></CraftDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://art-and-craft-store-hazel.vercel.app/craftdata/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/craftdata/${params.id}`),
 
             },
             {
                 path: '/subcategory',
                 element: <SubCetegory></SubCetegory>,
-                loader: () => fetch('https://art-and-craft-store-hazel.vercel.app/subcategorydata')
+                loader: () => fetch('http://localhost:5000/subcategorydata')
 
             },
 
             {
                 path: '/view/:id',
                 element: <ViewSubcategory></ViewSubcategory>,
-                loader: () => fetch('https://art-and-craft-store-hazel.vercel.app/subcategorydata'),
+                loader: () => fetch('http://localhost:5000/subcategorydata'),
 
             },
             {
                 path: '/viewmore/:id',
                 element: <PrivateRoutes><ViewMoreSub></ViewMoreSub>,</PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://art-and-craft-store-hazel.vercel.app/subdata/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/subdata/${params.id}`),
             },
 
 
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
             {
                 path: '/allArtAndCraft',
                 element: <PrivateRoutes> <AllArtAndCraft></AllArtAndCraft></PrivateRoutes>,
-                loader: () => fetch('https://art-and-craft-store-hazel.vercel.app/crafts'),
+                loader: () => fetch('http://localhost:5000/crafts'),
             },
 
 
