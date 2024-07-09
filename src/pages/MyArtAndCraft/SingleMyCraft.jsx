@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SingleMyCraft = ({ card, control, setControl, index }) => {
+    console.log(card);
   const { item, photo, price, stockStatus, _id } = card;
 
   const handleDelete = (_id) => {
@@ -66,13 +68,14 @@ const SingleMyCraft = ({ card, control, setControl, index }) => {
         </div>
       </td>
       <td className="py-3 px-6 text-left">
-        <button  className="btn-ghost p-2">
-          <FaEdit className="text-2xl text-green-600"></FaEdit>
-        </button>
+        <Link to={`/update/${_id}`}>
+          <button className="btn-ghost p-2">
+            <FaEdit className="text-2xl text-green-600"></FaEdit>
+          </button>
+        </Link>
       </td>
       <td className="py-3 px-6 text-left">
-        <button onClick={()=>handleDelete(_id)}
-        className="btn-ghost p-2">
+        <button onClick={() => handleDelete(_id)} className="btn-ghost p-2">
           <FaTrash className="text-2xl text-red-600"></FaTrash>
         </button>
       </td>
@@ -84,6 +87,7 @@ SingleMyCraft.propTypes = {
   card: PropTypes.object.isRequired,
   control: PropTypes.bool.isRequired,
   setControl: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default SingleMyCraft;
